@@ -6,12 +6,11 @@
 /*   By: weast <weast@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:14:02 by weast             #+#    #+#             */
-/*   Updated: 2025/03/05 14:48:18 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:54:30 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	parse_format_type(char specifier, va_list args)
 {
@@ -19,9 +18,9 @@ int	parse_format_type(char specifier, va_list args)
 
 	len = 0;
 	if (specifier == 'c')
-		len = ft_putchar((char)(va_arg(args, int)));
+		len = ft_putchar_fd((char)(va_arg(args, int)), 0);
 	else if (specifier == 's')
-		len = ft_putstr(va_arg(args, char *));
+		len = ft_putstr_fd(va_arg(args, char *), 0);
 	else if (specifier == 'p')
 		len = ft_putpointer(va_arg(args, void *), "0123456789abcdef");
 	else if (specifier == 'i' || specifier == 'd')
@@ -33,7 +32,7 @@ int	parse_format_type(char specifier, va_list args)
 	else if (specifier == 'X')
 		len = ft_putuint(va_arg(args, unsigned int), "0123456789ABCDEF");
 	else
-		len = ft_putchar('%');
+		len = ft_putchar_fd('%', 0);
 	return (len);
 }
 
@@ -56,7 +55,7 @@ int	ft_printf(const char *str, ...)
 			i += 2;
 		}
 		else
-			total_len += ft_putchar(str[i++]);
+			total_len += ft_putchar_fd(str[i++], 0);
 	}
 	va_end(args);
 	return (total_len);
