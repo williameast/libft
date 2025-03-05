@@ -6,9 +6,11 @@
 /*   By: weast <weast@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:00 by weast             #+#    #+#             */
-/*   Updated: 2024/09/17 12:16:25 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:29:38 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 #include "get_next_line.h"
 
 char	*generate_line(char *start)
