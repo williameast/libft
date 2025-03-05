@@ -6,7 +6,7 @@
 /*   By: weast <weast@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:03:56 by weast             #+#    #+#             */
-/*   Updated: 2025/03/05 14:47:46 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:52:17 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include "libft.h"
 
 int		ft_putchar(char c);
 int		ft_putstr(char *s);

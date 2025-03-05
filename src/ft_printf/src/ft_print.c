@@ -6,12 +6,11 @@
 /*   By: William <weast@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 14:32:51 by William           #+#    #+#             */
-/*   Updated: 2025/03/05 15:34:58 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:52:32 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_putstr(char *s)
 {
