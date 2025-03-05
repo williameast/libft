@@ -6,11 +6,11 @@
 /*   By: weast <weast@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:44:21 by weast             #+#    #+#             */
-/*   Updated: 2025/03/05 13:49:06 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:48:01 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_whitespace(char c)
+int	ft_iswhitespace(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n'
 		|| c == '\r' || c == '\v' || c == '\f');
