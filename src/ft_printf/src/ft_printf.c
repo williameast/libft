@@ -6,11 +6,12 @@
 /*   By: weast <weast@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:14:02 by weast             #+#    #+#             */
-/*   Updated: 2024/08/12 13:33:10 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 14:48:18 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int	parse_format_type(char specifier, va_list args)
 {
