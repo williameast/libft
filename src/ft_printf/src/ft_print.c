@@ -6,7 +6,7 @@
 /*   By: William <weast@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 14:32:51 by William           #+#    #+#             */
-/*   Updated: 2025/03/05 15:52:32 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 16:03:09 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_putpointer(void *num, char *set)
 	len = ft_putstr("0x");
 	if (ptr >= base)
 		len += ft_putulong(ptr / base, set);
-	ft_putchar(set[ptr % base]);
+	ft_putchar_fd(set[ptr % base], 0);
 	len++;
 	return (len);
 }
