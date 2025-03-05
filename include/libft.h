@@ -6,7 +6,7 @@
 /*   By: weast <weast@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:16:23 by weast             #+#    #+#             */
-/*   Updated: 2025/03/05 15:35:50 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:44:41 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	*ft_memmove(void *dest, const void *source, size_t n);
 void	*ft_memset(void *b, int c, size_t n);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *s1);
+char	*ft_strcpy(char *dest, const char *src);
 size_t	ft_strlcat(char *dest, const char *source, size_t n);
 size_t	ft_strlcpy(char *dest, const char *source, size_t destsize);
 size_t	ft_strlen(const char *str);
