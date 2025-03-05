@@ -6,7 +6,7 @@
 /*   By: William <weast@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 14:32:51 by William           #+#    #+#             */
-/*   Updated: 2025/03/05 14:47:01 by weast            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:34:58 by weast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_putuint(unsigned int num, char *set)
 	len = 0;
 	if (num >= base)
 		len += ft_putuint(num / base, set);
-	ft_putchar(set[num % base]);
+	ft_putchar_fd(set[num % base], 0);
 	len++;
 	return (len);
 }
@@ -47,7 +47,7 @@ int	ft_putulong(unsigned long num, char *set)
 	len = 0;
 	if (num >= base)
 		len += ft_putulong(num / base, set);
-	len += ft_putchar(set[num % base]);
+	len += ft_putchar_fd(set[num % base], 0);
 	return (len);
 }
 
@@ -76,7 +76,7 @@ int	ft_putint(int num, char *set)
 	len = 0;
 	if (num < 0)
 	{
-		len += ft_putchar('-');
+		len += ft_putchar_fd('-', 0);
 		len += ft_putuint((unsigned long)(-num), set);
 	}
 	else
