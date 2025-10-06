@@ -28,7 +28,7 @@ char	*generate_line(char *start)
 		free(start);
 		return (NULL);
 	}
-	line = malloc((ft_strlen(start) - i + 1) * sizeof(char));
+	line = malloc(sizeof(char) * (ft_strlen(start) - i + 1));
 	if (!line)
 		return (NULL);
 	i++;
@@ -39,28 +39,39 @@ char	*generate_line(char *start)
 	return (line);
 }
 
-char	*read_file(int fd, char *start)
+static char	*read_loop(int fd, char *start, char *buffer)
 {
-	char	*buffer;
 	int		bytes_read;
+	char	*temp;
 
-	bytes_read = 888;
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	buffer[0] = '\0';
-	while (bytes_read != 0 && !ft_strchr(buffer, '\n'))
+	bytes_read = 1;
+	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
-		{
-			free(start);
-			free(buffer);
-			return (NULL);
-		}
+			return (free(start), NULL);
 		buffer[bytes_read] = '\0';
-		start = ft_strjoin(start, buffer);
+		temp = ft_strjoin(start, buffer);
+		free(start);
+		start = temp;
+		if (ft_strchr(buffer, '\n'))
+			break ;
 	}
+	return (start);
+}
+
+char	*read_file(int fd, char *start)
+{
+	char	*buffer;
+
+	if (!start)
+		start = ft_strdup("");
+	if (!start)
+		return (NULL);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	start = read_loop(fd, start, buffer);
 	free(buffer);
 	return (start);
 }
@@ -82,7 +93,7 @@ char	*get_next_line(int fd)
 	{
 		while (start[i] && start[i] != '\n')
 			i++;
-		line = malloc(sizeof(char) * i + 2);
+		line = malloc(sizeof(char) * (i + 2));
 		if (!line)
 			return (NULL);
 		line = ft_strcpy(line, start);
