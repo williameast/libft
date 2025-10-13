@@ -20,7 +20,8 @@ LIBFT_FILES = ft_atoi ft_bzero ft_calloc ft_isalpha ft_isalnum \
 	ft_strlcat ft_strlcpy ft_strlen ft_strncmp ft_strnstr \
 	ft_strrchr ft_tolower ft_toupper ft_substr ft_strjoin \
 	ft_strtrim ft_split ft_itoa ft_strmapi ft_striteri \
-	ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd ft_iswhitespace
+	ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd \
+	ft_iswhitespace
 
 GNL_FILES = get_next_line
 EXTRA_FILES = error_exit safe_malloc word_count
