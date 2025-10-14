@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude
 AR = ar rcs
 RM = rm -f
 
-BUILD_DIR = build
+OBJ_DIR = obj
 
 # Source directories
 LIBFT_DIR = src/libft_core
@@ -33,35 +33,32 @@ SRCS = $(addprefix $(LIBFT_DIR)/, $(addsuffix .c, $(LIBFT_FILES))) \
 	   $(addprefix $(EXTRA_DIR)/, $(addsuffix .c, $(EXTRA_FILES))) \
 	   $(addprefix $(FT_PRINTF_DIR)/, $(addsuffix .c, $(FT_PRINTF_FILES)))
 
-# Map each .c to a build/*.o
-OBJS = $(addprefix $(BUILD_DIR)/, $(notdir $(SRCS:.c=.o)))
 
 all: $(NAME)
 
-# Pattern rule: match .c source based on object filename
-$(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
+# Map each .c to a obj/*.o
+OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+
+# Pattern rules: match .c source based on object filename
+$(OBJ_DIR)/%.o: $(LIBFT_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(GNL_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(EXTRA_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(FT_PRINTF_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# This rule ensures we pass the correct full path to the compiler
-$(BUILD_DIR)/%.o: $(LIBFT_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-$(BUILD_DIR)/%.o: $(GNL_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-$(BUILD_DIR)/%.o: $(EXTRA_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-$(BUILD_DIR)/%.o: $(FT_PRINTF_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Make sure build/ exists
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+# Make sure obj/ exists
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 # Build the static library
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
