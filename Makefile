@@ -36,6 +36,8 @@ SRCS = $(addprefix $(LIBFT_DIR)/, $(addsuffix .c, $(LIBFT_FILES))) \
 # Map each .c to a build/*.o
 OBJS = $(addprefix $(BUILD_DIR)/, $(notdir $(SRCS:.c=.o)))
 
+all: $(NAME)
+
 # Pattern rule: match .c source based on object filename
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -57,8 +59,6 @@ $(BUILD_DIR):
 # Build the static library
 $(NAME): $(OBJS)
 	$(AR) $@ $^
-
-all: $(NAME)
 
 clean:
 	$(RM) $(OBJS)
